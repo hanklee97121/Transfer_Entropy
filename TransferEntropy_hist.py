@@ -35,9 +35,9 @@ def TransferEntropy(data, r):
 
   #normalize probability density to probability mass
   P_k *= r #(nk)
-  P_kl *= r #(nk, nl)
-  P_xk *= r #(nx, nk)
-  P_xkl *= r #(nx, nk, nl)
+  P_kl *= r**2 #(nk, nl)
+  P_xk *= r**2 #(nx, nk)
+  P_xkl *= r**3 #(nx, nk, nl)
 
   #create conditional probability that will be used to calculate transfer entropy
   p_ik = np.divide(P_xk, P_k, out=np.zeros_like(P_xk), where=P_k!=0) #when P_k=0, output=0 shape = (nx, nk)
